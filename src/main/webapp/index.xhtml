@@ -5,7 +5,60 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-   <f:view>
-      <h:outputLabel value="Hello, world"/>
-   </f:view>
+
+<h:head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"/>
+</h:head>
+
+<f:view>
+    <div class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">student manager 2000</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.xhtml">Manage</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="students.xhtml">List</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex flex-row justify-content-around gap-3 vh-100 w-100">
+        <h:form>
+            <div class="border-1 border-light rounded w-auto bg-light h-auto p-3 gap-2 d-flex justify-content-center flex-column align-items-center">
+                <h3>Add Student</h3>
+                <label>First Name</label>
+                <h:inputText value="#{studentBean.firstName}" required="true" styleClass="form-control"/>
+                <label>Last Name</label>
+                <h:inputText value="#{studentBean.lastName}" required="true" styleClass="form-control"/>
+                <label>Birth Date</label>
+                <h:inputText value="#{studentBean.birthDate}" type="date" styleClass="form-control"/>
+                <label>Grade</label>
+                <h:inputText value="#{studentBean.grade}" required="true" styleClass="form-control"/>
+                <h:commandButton action="#{studentBean.addStudent()}" value="Add Student" styleClass="btn btn-primary"/>
+            </div>
+        </h:form>
+        <h:form>
+            <div class="border-1 border-light rounded w-auto bg-light h-auto p-3 gap-2 d-flex justify-content-center flex-column align-items-center">
+                <h3>Edit Student</h3>
+                <label>ID</label>
+                <h:inputText value="#{studentBean.id}" required="true" styleClass="form-control"/>
+                <label>First Name</label>
+                <h:inputText value="#{studentBean.firstName}" required="true" styleClass="form-control"/>
+                <label>Last Name</label>
+                <h:inputText value="#{studentBean.lastName}" required="true" styleClass="form-control"/>
+                <label>Birth Date</label>
+                <h:inputText value="#{studentBean.birthDate}" type="date" styleClass="form-control"/>
+                <label>Grade</label>
+                <h:inputText value="#{studentBean.grade}" required="true" styleClass="form-control"/>
+                <h:commandButton action="#{studentBean.editStudent()}" value="Edit Student" styleClass="btn btn-warning"/>
+            </div>
+        </h:form>
+    </div>
+</f:view>
+
 </html>

@@ -17,29 +17,29 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.xhtml">Manage</a>
+                        <a class="nav-link" href="index.xhtml">Manage</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="students.xhtml">List</a>
+                        <a class="nav-link active" href="students.xhtml">List</a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="d-flex flex-column align-items-center vh-100 w-100">
-        <h:form>
-            <div class="border-1 border-light rounded w-auto bg-light h-auto p-3 gap-2 d-flex justify-content-center flex-column align-items-center">
-                <h3>Add Student</h3>
-                <label>First Name</label>
-                <h:inputText value="#{studentBean.firstName}" required="true" styleClass="form-control"/>
-                <label>Last Name</label>
-                <h:inputText value="#{studentBean.lastName}" required="true" styleClass="form-control"/>
-                <label>Birth Date</label>
-                <h:inputText value="#{studentBean.birthDate}" type="date" styleClass="form-control"/>
-                <h:commandButton action="#{studentBean.addStudent()}" value="Add Student" styleClass="btn btn-primary"/>
+    <div class="d-flex flex-column align-items-center vh-100 w-100 gap-2">
+        <ui:repeat value="#{studentBean.students}" var="s">
+            <div class="d-flex p-2 h-auto w-50 justify-content-between align-items-center border-1 border-light bg-light rounded">
+                <p>##{s.studentId}</p>
+                <p>#{s.firstName} #{s.lastName}</p>
+                <p>[#{s.birthDate}]</p>
+                <p>#{s.grade}</p>
+                <h:form>
+                    <h:commandButton value="Kill" action="#{studentBean.deleteStudent(s.studentId)}"/>
+                </h:form>
             </div>
-        </h:form>
+        </ui:repeat>
+        <h2>Average grade: #{studentBean.averageGrade}</h2>
     </div>
 </f:view>
 
